@@ -30,6 +30,12 @@
  */
 require_once(__CA_LIB_DIR__."/Parsers/TimeExpressionParser.php");
 
+if (!function_exists('str_ends_with')) {
+  function str_ends_with($str, $end) {
+    return (@substr_compare($str, $end, -strlen($end))==0);
+  }
+}
+
 class frenchRevolutionaryCalendarPlugin extends BaseApplicationPlugin {
 		# -------------------------------------------------------
 		private $opo_config;
@@ -108,10 +114,13 @@ class frenchRevolutionaryCalendarPlugin extends BaseApplicationPlugin {
 				$vs_expression=caRemoveAccents($vs_expression);
 
 				if (((bool)$this->opo_config->get('removeSquareBrackets'))) {
-					
-					$pa_params["expression"] = str_replace(array('[',']'),'',$pa_params["expression"]);
+					$pa_params["expression"] = substr($pa_params["expression"] = , 0, -2);
 				}
-
+				if (((bool)$this->opo_config->get('interrogationEqualsCirca'))) {	
+					if(str_ends_with($pa_params["expression"], " ?")) {
+						$pa_params["expression"] = str_replace($pa_params["expression"]);
+					}
+				}
 				// Traitement des " et s. d." de la Fondation Chambrun dans la numérisation 2020.
 				$vs_expression = str_replace("s. d.", "s.d.", $vs_expression);
 				$vs_expression = str_replace("- s.d.", " et s.d.", $vs_expression);
