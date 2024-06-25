@@ -114,7 +114,7 @@ class frenchRevolutionaryCalendarPlugin extends BaseApplicationPlugin {
 				$vs_expression=caRemoveAccents($vs_expression);
 
 				if (((bool)$this->opo_config->get('removeSquareBrackets'))) {
-					$pa_params["expression"] = substr($pa_params["expression"] = , 0, -2);
+					$pa_params["expression"] = substr($pa_params["expression"] , 0, -2);
 				}
 				if (((bool)$this->opo_config->get('interrogationEqualsCirca'))) {	
 					if(str_ends_with($pa_params["expression"], " ?")) {
