@@ -3,7 +3,7 @@ traiter les dates du calendrier révolutionnaire dans CollectiveAccess
 
 ## conf files & prerequisites / fichiers de configuration et pré-requis
 
-Ce plugin nécessite que les fichiers de parsing des dates pour le français (app/lib/parsers/TimeExpressionParser/fr_FR.lang) soit paramétrer d'une certaine manière.
+Ce plugin nécessite que les fichiers de parsing des dates pour le français (app/lib/parsers/TimeExpressionParser/fr_FR.lang) soit paramétré spécifiquement.
 
 Vous en trouverez une copie dans le dossier prerequisites.
 
